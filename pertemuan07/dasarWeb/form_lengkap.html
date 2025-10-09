@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Validasi Lengkap</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Form Validasi Lengkap</h1>
+    <div id="hasil"></div>
+    <form id="myForm">
+        <label for="nama">Nama:</label>
+        <input type="text" id="nama" name="nama"><br>
+        
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email"><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+        <span id="password-error" style="color: red;"></span><br>
+        
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+    $(document).ready(function() {
+        $("#myForm").submit(function(event) {
+            event.preventDefault();
+            var isValid = true;
+            
+            // Validasi Nama dan Email (diasumsikan sudah ada)
+
+            // Validasi Password di client-side
+            var password = $("#password").val();
+            if (password.length < 8) {
+                $("#password-error").text("Password minimal 8 karakter.");
+                isValid = false;
+            } else {
+                $("#password-error").text("");
+            }
+
+            if (isValid) {
+                $.ajax({
+                    url: "proses_validasi_lengkap.php",
+                    type: "POST",
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        $("#hasil").html(response);
+                    }
+                });
+            }
+        });
+    });
+    </script>
+</body>
+</html>
