@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    background-color: #eef2f3; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.container {
+    background-color: white; 
+    margin: 35px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); 
+    border: 1px solid #e0e0e0;
+    width: 100%;
+    max-width: 550px;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #1d3557;
+    margin-top: 0;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #457b9d;
+}
+
+.input-with-icon {
+    position: relative;
+}
+
+.input-with-icon svg {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: #a8dadc;
+    transition: color 0.3s;
+}
+
+/* Penyesuaian posisi ikon khusus untuk textarea */
+.input-with-icon textarea ~ svg {
+    top: 22px;
+    transform: none;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    /* Padding kiri tetap besar untuk memberi ruang bagi ikon */
+    padding: 15px 15px 15px 50px; 
+    border: 1px solid #dfe6e9;
+    border-radius: 10px;
+    box-sizing: border-box;
+    transition: all 0.3s;
+    background-color: #f8f9fa;
+    color: #1d3557;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Efek 'focus' dipertahankan agar interaksi terasa sama */
+input:focus,
+textarea:focus {
+    border-color: #457b9d;
+    box-shadow: 0 0 0 3px rgba(69, 123, 157, 0.2);
+    outline: none;
+}
+
+input:focus ~ svg,
+textarea:focus ~ svg {
+    color: #457b9d;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    /* Gradien disederhanakan menjadi warna solid */
+    background-color: #1d3557; 
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transisi disederhanakan */
+}
+
+/* Efek hover dipertahankan dengan mengubah warna latar */
+button:hover {
+    background-color: #457b9d;
+}
+
+button:disabled {
+    background-color: #a8dadc;
+    cursor: not-allowed;
+}
+
+.error-message {
+    color: #e63946;
+    font-size: 14px;
+    margin-top: 8px;
+    display: none;
+}
+
+.result-card {
+    background-color: #f1faee;
+    border-left: 5px solid #2a9d8f;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #e0e0e0;
+    margin: 30px 0;
+}
