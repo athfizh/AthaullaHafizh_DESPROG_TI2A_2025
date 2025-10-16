@@ -79,7 +79,6 @@ textarea {
     min-height: 120px;
 }
 
-/* Efek 'focus' dipertahankan agar interaksi terasa sama */
 input:focus,
 textarea:focus {
     border-color: #457b9d;
@@ -95,7 +94,6 @@ textarea:focus ~ svg {
 button {
     width: 100%;
     padding: 15px;
-    /* Gradien disederhanakan menjadi warna solid */
     background-color: #1d3557; 
     color: white;
     border: none;
@@ -103,10 +101,9 @@ button {
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Transisi disederhanakan */
+    transition: background-color 0.3s ease;
 }
 
-/* Efek hover dipertahankan dengan mengubah warna latar */
 button:hover {
     background-color: #457b9d;
 }
