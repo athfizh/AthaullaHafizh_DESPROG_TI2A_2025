@@ -1,0 +1,35 @@
+<?php
+session_start();
+include 'koneksi.php';
+include 'csrf.php';
+
+$id = stripslashes(strip_tags(htmlspecialchars($_POST['id'], ENT_QUOTES)));
+$nama = stripslashes(strip_tags(htmlspecialchars($_POST['nama'], ENT_QUOTES)));
+$jenis_kelamin = stripslashes(strip_tags(htmlspecialchars($_POST['jenis_kelamin'], ENT_QUOTES)));
+$alamat = stripslashes(strip_tags(htmlspecialchars($_POST['alamat'], ENT_QUOTES)));
+$no_telp = stripslashes(strip_tags(htmlspecialchars($_POST['no_telp'], ENT_QUOTES)));
+
+if ($id == "") {
+    // Insert (dari langkah 17)
+    $query = "insert into anggota (nama, jenis_kelamin, alamat, no_telp) 
+              values (:nama, :jenis_kelamin, :alamat, :no_telp)";
+    $sql = $db1->prepare($query);
+    $sql->bindparam(':nama', $nama);
+    $sql->bindparam(':jenis_kelamin', $jenis_kelamin);
+    $sql->bindparam(':alamat', $alamat);
+    $sql->bindparam(':no_telp', $no_telp);
+} else {
+    // Update
+    $query = "update anggota set nama=:nama, jenis_kelamin=:jenis_kelamin, alamat=:alamat, no_telp=:no_telp where id=:id";
+    $sql = $db1->prepare($query);
+    $sql->bindparam(':nama', $nama);
+    $sql->bindparam(':jenis_kelamin', $jenis_kelamin);
+    $sql->bindparam(':alamat', $alamat);
+    $sql->bindparam(':no_telp', $no_telp);
+    $sql->bindParam(':id', $id, PDO::PARAM_INT);
+}
+
+$sql->execute();
+echo json_encode(['success' => 'Sukses']);
+$db1 = null;
+?>
